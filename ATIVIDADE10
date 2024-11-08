@@ -1,0 +1,16 @@
+import requests
+url = "https://api.disneypi.dev/character/18"
+response = requests.get(url)
+if response.status_code == 200:
+    data = response.json()
+    name = data['data']['name']
+    films = data['data']['films']
+    print(f"personagem : {name}")
+    if films :
+        print("filmes:")
+        for film in films:
+            print(f"- {film}")
+    else:
+        print ("este personagem não aparece em nenhum filme.")
+else:
+    print(f"erro ao acessar a API. Status code: {response.status_code}")    
